@@ -1,0 +1,14 @@
+function addDetailedCalendar($ac,$pw,$pass){
+  $ret = array();
+  try{
+    $db = new DBConnection();
+    $db->getConnection();
+    $sql = 'SELECT count(".mysql_real_escape_string($ac).") FROM [table name] 
+            WHERE ".mysql_real_escape_string($pw)." = (SELECT DISTINCT [password_name] FROM [table_name]) 
+                                                       WHERE [account_name] = ".mysql_real_escape_string($ac).")';
+
+
+    $pass = mysql_query($sql);
+  }
+  return $pass;
+}
